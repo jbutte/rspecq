@@ -74,7 +74,7 @@ module RSpecQ
       @heartbeat_updated_at = nil
       @max_requeues = 3
       @queue_wait_timeout = 30
-      @seed = srand && srand % 0xFFFF
+      @seed = srand && (srand % 0xFFFF)
       @tags = []
       @reproduction = false
 
@@ -126,9 +126,9 @@ module RSpecQ
         if populate_timings
           RSpec.configuration.add_formatter(Formatters::JobTimingRecorder.new(queue, job))
         end
-        
+
         options = ["--format", "progress", job]
-        tags.each { |tag| options.push(*["--tag", tag]) }
+        tags.each { |tag| options.push("--tag", tag) }
         opts = RSpec::Core::ConfigurationOptions.new(options)
         _result = RSpec::Core::Runner.new(opts).run($stderr, $stdout)
 

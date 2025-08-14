@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   if ENV["CI"] && ENV["RSPEC_CORE"]
     s.add_dependency "rspec-core", ENV["RSPEC_CORE"]
   else
-    s.add_dependency "rspec-core"
+    s.add_dependency "rspec-core", ">= 3.8.0"
   end
 
   s.add_dependency "redis"
@@ -25,5 +25,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
-  s.add_development_dependency "rubocop", "~> 0.93.0"
+  s.add_development_dependency "rubocop", "~> 1.26.0"
 end
